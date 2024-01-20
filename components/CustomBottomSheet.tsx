@@ -6,13 +6,14 @@ import { useThemeColor } from './Themed'
 interface CustomBottomSheetProps {
   children: ReactNode
   backdropComponent?: React.FC<BottomSheetBackdropProps>
+  snapPoints?: string[]
 }
 
 type Ref = BottomSheetMethods
 
 const CustomBottomSheet = forwardRef<Ref, CustomBottomSheetProps>(
-  ({ children, backdropComponent, ...rest }, ref) => {
-    const snapPoints = useMemo(() => ['40%'], [])
+  ({ children, backdropComponent, snapPoints, ...rest }, ref) => {
+    // const snapPoints = useMemo(() => ['40%'], [])
     const backgroundColor = useThemeColor(
       { light: '#fff', dark: '#222' },
       'background'

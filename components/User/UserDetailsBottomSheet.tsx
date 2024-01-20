@@ -20,7 +20,11 @@ const UserDetailsBottomSheet = ({ bottomSheetRef, user }: any) => {
     []
   )
   return (
-    <CustomBottomSheet ref={bottomSheetRef} backdropComponent={renderBackdrop}>
+    <CustomBottomSheet
+      ref={bottomSheetRef}
+      backdropComponent={renderBackdrop}
+      snapPoints={['40%']}
+    >
       <View style={styles.bottomSheetContent}>
         <View style={styles.userInfoContainer}>
           {/* User Avatar */}

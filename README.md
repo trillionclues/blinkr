@@ -18,7 +18,9 @@ Blinkr is an anonymous chat app that allows you to connect with strangers within
 
 - To optimize map rendering, implement pagination or infinite scrolling when displaying user markers. Only loading a subset of nearby users at a time as the user scrolls/zooms on the map.
 
-- Finally, I display the users on the map using [react-native-maps](https://github.com/react-native-maps/react-native-maps#customizing-the-map-style)
+  --- In consideration ---
+
+- Finally, display the users on the map using [react-native-maps](https://github.com/react-native-maps/react-native-maps#customizing-the-map-style)
 
 ## Features
 
