@@ -22,7 +22,7 @@ Blinkr is an anonymous chat app that allows you to connect with strangers within
 - Location services enabled
 
 ```
-git clone https://github.com/blinkr/blinkr-mobile-app.git
+git clone https://github.com/trillionclues/blinkr-mobile-app.git
 ```
 
 ```
