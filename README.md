@@ -19,7 +19,7 @@ Blinkr is an anonymous chat app that allows you to connect with strangers within
 ### Prerequisites
 
 - iOS 12.0+ / Android 8.0+
-- Location services enabledgit clone
+- Location services enabled
 
 ```
 git clone https://github.com/blinkr/blinkr-mobile-app.git
