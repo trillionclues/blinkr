@@ -53,6 +53,7 @@ Download Blinkr from the App Store or Google Play Store. Sign up with your phone
 - [React Native Maps](https://github.com/react-native-maps/react-native-maps) - Map library used
 - [Expo Location](https://docs.expo.io/versions/latest/sdk/location/) - Location library used
 - [Socket.io](https://socket.io/) - Real-time communication library used
+- [Gorhom Bottom Sheet](https://ui.gorhom.dev/) - Bottom sheet library used
 
 ## Contributing
 
