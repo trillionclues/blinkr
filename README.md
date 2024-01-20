@@ -10,11 +10,13 @@ Blinkr is an anonymous chat app that allows you to connect with strangers within
 
 - Next, I filter the users who are beyond the desired distance (e.g., 500 meters) from the current user's location.
 
-<!-- - Instead of filtering all users down to those within 500m, I am considering a way to only query for nearby users to begin with using a geoquery library or database geospatial features as I will be storing user locations. -->
+  --- In consideration ---
 
-<!-- - For updating locations, a background geolocation tracker that regularly fetches the user's location and updates their coordinates in the database like react-native-background-geolocation could be useful. -->
+- Instead of filtering all users down to those within 500m, I am considering a way to only query for nearby users to begin with using a geoquery library or database geospatial features as I will be storing user locations. Libraries like geokdbush or react-native-geospatial for efficient geospatial queries
 
-<!-- - To optimize map rendering, implement pagination or infinite scrolling when displaying user markers. Only loading a subset of nearby users at a time as the user scrolls/zooms on the map. -->
+- For updating locations, a background geolocation tracker that regularly fetches the user's location and updates their coordinates in the database like react-native-background-geolocation could be useful.
+
+- To optimize map rendering, implement pagination or infinite scrolling when displaying user markers. Only loading a subset of nearby users at a time as the user scrolls/zooms on the map.
 
 - Finally, I display the users on the map using [react-native-maps](https://github.com/react-native-maps/react-native-maps#customizing-the-map-style)
 
