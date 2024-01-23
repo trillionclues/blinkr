@@ -45,7 +45,7 @@ const UserDetailsBottomSheet = ({ bottomSheetRef, user }: any) => {
               {user.name}
             </Text>
             <View style={styles.directionContainer}>
-              <Entypo name='paper-plane' size={24} color='#4976fd' />
+              <Entypo name='paper-plane' size={24} color='#1E7ED4' />
               <Text
                 style={styles.distance}
                 lightColor='rgba(0,0,0,0.8)'
