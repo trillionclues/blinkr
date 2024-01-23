@@ -4,8 +4,13 @@ import CustomBottomSheet from '../CustomBottomSheet'
 import { Entypo } from '@expo/vector-icons'
 import { Text } from '../Themed'
 import { BottomSheetBackdrop } from '@gorhom/bottom-sheet'
+import { router } from 'expo-router'
 
 const UserDetailsBottomSheet = ({ bottomSheetRef, user }: any) => {
+  const handlePress = () => {
+    router.push('/(tabs)/two')
+    bottomSheetRef.current?.forceClose()
+  }
   // console.log(user)
   // Add overlay on open
   const renderBackdrop = useCallback(
@@ -106,7 +111,10 @@ const UserDetailsBottomSheet = ({ bottomSheetRef, user }: any) => {
           </View>
         </View>
 
-        <TouchableOpacity style={styles.writeMessageButton}>
+        <TouchableOpacity
+          style={styles.writeMessageButton}
+          onPress={handlePress}
+        >
           <Text
             style={{ fontSize: 20 }}
             lightColor='#fff'
@@ -149,7 +157,8 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   writeMessageButton: {
-    backgroundColor: '#4976fd',
+    // backgroundColor: '#4976fd',
+    backgroundColor: '#1E7ED4',
     padding: 16,
     borderRadius: 50,
     alignItems: 'center',
