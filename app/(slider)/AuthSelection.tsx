@@ -2,7 +2,7 @@ import React from 'react'
 import { StyleSheet, Pressable, Image } from 'react-native'
 import { router } from 'expo-router'
 import { Text, View } from '../../components/Themed'
-import { MaterialIcons } from '@expo/vector-icons'
+import { Entypo, MaterialIcons } from '@expo/vector-icons'
 
 export default function AuthSelection() {
   const handlePress = () => {
@@ -12,14 +12,15 @@ export default function AuthSelection() {
   return (
     <View style={styles.container}>
       <View style={{ marginBottom: 40, alignItems: 'center' }}>
-        <Image
+        {/* <Image
           source={require('../../assets/images/location_pin.jpg')}
           style={{
             width: 200,
             height: 200,
             resizeMode: 'contain',
           }}
-        />
+        /> */}
+        <Entypo name='location-pin' size={154} color='#1E7ED4' />
         <Text
           style={{
             fontWeight: 'bold',

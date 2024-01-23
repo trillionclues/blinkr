@@ -1,9 +1,9 @@
-import { StyleSheet } from 'react-native'
+import { Platform, StatusBar, StyleSheet } from 'react-native'
 
 import EditScreenInfo from '../../components/EditScreenInfo'
 import { Text, View } from '../../components/Themed'
 
-export default function TabTwoScreen() {
+export default function ChatScreen() {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Tab One</Text>
@@ -20,8 +20,7 @@ export default function TabTwoScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 40,
   },
   title: {
     fontSize: 20,

@@ -3,6 +3,7 @@ import { Text, View } from '../../components/Themed'
 import { Image, Platform, Pressable, StatusBar, StyleSheet } from 'react-native'
 import { TextInput } from 'react-native-gesture-handler'
 import { router } from 'expo-router'
+import { Entypo } from '@expo/vector-icons'
 
 export default function WelcomeBack() {
   const [phoneNumber, setPhoneNumber] = useState('')
@@ -39,12 +40,20 @@ export default function WelcomeBack() {
   }
   return (
     <View style={style.container}>
-      <Image
+      {/* <Image
         source={require('../../assets/images/location_pin.jpg')}
         style={{
           width: 100,
           height: 100,
           resizeMode: 'contain',
+          alignSelf: 'center',
+        }}
+      /> */}
+      <Entypo
+        name='location-pin'
+        size={100}
+        color='#1E7ED4'
+        style={{
           alignSelf: 'center',
         }}
       />
