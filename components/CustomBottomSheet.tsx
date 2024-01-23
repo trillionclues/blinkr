@@ -24,7 +24,10 @@ const CustomBottomSheet = forwardRef<Ref, CustomBottomSheetProps>(
         enablePanDownToClose={true}
         ref={ref}
         snapPoints={snapPoints}
-        handleIndicatorStyle={{ display: 'none' }}
+        handleIndicatorStyle={{
+          // display: 'none',
+          backgroundColor: '#fff',
+        }}
         backgroundStyle={{
           backgroundColor,
         }}

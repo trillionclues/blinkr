@@ -22,7 +22,7 @@ export default function TabOneScreen() {
         onUserSelect={handleUserSelect}
       />
       <SafeAreaView style={styles.container}>
-        <StatusBar />
+        <StatusBar barStyle='default' />
       </SafeAreaView>
     </>
   )
