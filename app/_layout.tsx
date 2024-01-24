@@ -14,14 +14,40 @@ export { ErrorBoundary } from 'expo-router'
 
 export const unstable_settings = {
   // Ensure that reloading on `/modal` keeps a back button present.
-  initialRouteName: '(tabs)',
+  initialRouteName: 'Onboarding',
 }
+const isAuthenticated = false
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync()
 
-export default function RootLayout() {
-  const isAuthenticated = useAuth()
+// if (!isAuthenticated) {
+//   // If the user is not authenticated, show the welcome screen.
+//   // Onboarding screens
+//   function OnboardingScreen() {
+//     const colorScheme = useColorScheme()
+//     return (
+//       <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+//         <Stack screenOptions={{ headerShown: false }}>
+//           <Stack.Screen name='Onboarding' options={{ headerShown: false }} />
+//         </Stack>
+//       </ThemeProvider>
+//     )
+//   }
+// } else {
+//   function RootLayoutNav() {
+//     const colorScheme = useColorScheme()
+//     return (
+//       <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+//         <Stack screenOptions={{ headerShown: false }}>
+//           <Stack.Screen name='(slider)' options={{ headerShown: false }} />
+//         </Stack>
+//       </ThemeProvider>
+//     )
+//   }
+// }
+
+export default function App() {
   const [loaded, error] = useFonts({
     SpaceMono: require('../assets/fonts/Nunito-Variable.ttf'),
     ...FontAwesome.font,
@@ -43,22 +69,30 @@ export default function RootLayout() {
   }
 
   if (!isAuthenticated) {
-    return <WelcomeSlider />
+    return <OnboardingScreen />
   }
-
   return <RootLayoutNav />
 }
 
 // welcome slider
-function WelcomeSlider() {
-  const colorScheme = useColorScheme()
+// function WelcomeSlider() {
+//   const colorScheme = useColorScheme()
+//   return (
+//     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+//       <Stack screenOptions={{ headerShown: false }}>
+//         <Stack.Screen name='(slider)' options={{ headerShown: false }} />
+//         <Stack.Screen name='modal' options={{ presentation: 'modal' }} />
+//       </Stack>
+//     </ThemeProvider>
+//   )
+// }
+
+// Onboarding screen
+function OnboardingScreen() {
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack screenOptions={{ headerShown: false }}>
-        <Stack.Screen name='(slider)' options={{ headerShown: false }} />
-        <Stack.Screen name='modal' options={{ presentation: 'modal' }} />
-      </Stack>
-    </ThemeProvider>
+    <Stack screenOptions={{ headerShown: false }} initialRouteName='index'>
+      <Stack.Screen name='(Onboarding)' options={{ headerShown: false }} />
+    </Stack>
   )
 }
 
@@ -66,11 +100,9 @@ function WelcomeSlider() {
 function RootLayoutNav() {
   const colorScheme = useColorScheme()
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack screenOptions={{ headerShown: false }}>
-        <Stack.Screen name='(tabs)' options={{ headerShown: false }} />
-        <Stack.Screen name='modal' options={{ presentation: 'modal' }} />
-      </Stack>
-    </ThemeProvider>
+    <Stack screenOptions={{ headerShown: false }}>
+      <Stack.Screen name='(tabs)' options={{ headerShown: false }} />
+      <Stack.Screen name='modal' options={{ presentation: 'modal' }} />
+    </Stack>
   )
 }
