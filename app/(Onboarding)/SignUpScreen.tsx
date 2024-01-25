@@ -16,11 +16,11 @@ import PrimaryButton from '../../components/Button'
 import { router } from 'expo-router'
 import { AuthCallout } from '../../components/Button/SignupCallout'
 import { TouchableWithoutFeedback } from '@gorhom/bottom-sheet'
-import LottieView from 'lottie-react-native'
 import { useTheme } from '@react-navigation/native'
 
 export default function SignupScreen() {
   const theme = useTheme()
+  const dimensions = useWindowDimensions()
   const [errorMessage, setErrorMessage] = useState('')
   const [formData, setFormData] = useState({
     phoneNumber: '',
@@ -40,7 +40,31 @@ export default function SignupScreen() {
     // Implement signup logic here
   }
 
-  const dimensions = useWindowDimensions()
+  // const validatePhoneNumber = () => {
+  //   // Check if empty
+  //   if (!phoneNumber) {
+  //     setErrorMessage('Please enter a phone number')
+  //     return
+  //   }
+
+  // Check if valid format for nigerian numbers or international USA numbers/^(?:(?:\+|00)234|0)?[789]\d{9}$/
+  //   const phoneNumberRegex =
+  //     /^(?:(?:\+|00)234|0)?[789]\d{9}$/ || /^\+[0-9]{11}$/
+  //   if (!phoneNumberRegex.test(phoneNumber)) {
+  //     setErrorMessage('Please enter a valid phone number')
+  //     return false
+  //   }
+
+  //   setErrorMessage('')
+  //   return true
+  // }
+
+  // const handleLoginPress = () => {
+  //   if (validatePhoneNumber()) {
+  //     console.log('Phone number sent to backend...')
+  //     router.push('/(tabs)')
+  //   }
+  // }
 
   return (
     <KeyboardAvoidingView behavior='position' style={{ flex: 1 }}>

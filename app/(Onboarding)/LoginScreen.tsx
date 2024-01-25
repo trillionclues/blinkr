@@ -1,13 +1,10 @@
 import {
   View,
   Text,
-  TouchableOpacity,
   TextInput,
   KeyboardAvoidingView,
   useWindowDimensions,
   Keyboard,
-  StyleSheet,
-  Image,
 } from 'react-native'
 import React, { useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
@@ -35,33 +32,8 @@ export default function LoginScreen() {
   const handleSubmit = () => {
     console.log('Email:', formData.email)
     console.log('Password:', formData.password)
+    router.push('/(tabs)')
   }
-
-  // const validatePhoneNumber = () => {
-  //   // Check if empty
-  //   if (!phoneNumber) {
-  //     setErrorMessage('Please enter a phone number')
-  //     return
-  //   }
-
-  // Check if valid format for nigerian numbers or international USA numbers/^(?:(?:\+|00)234|0)?[789]\d{9}$/
-  //   const phoneNumberRegex =
-  //     /^(?:(?:\+|00)234|0)?[789]\d{9}$/ || /^\+[0-9]{11}$/
-  //   if (!phoneNumberRegex.test(phoneNumber)) {
-  //     setErrorMessage('Please enter a valid phone number')
-  //     return false
-  //   }
-
-  //   setErrorMessage('')
-  //   return true
-  // }
-
-  // const handleLoginPress = () => {
-  //   if (validatePhoneNumber()) {
-  //     console.log('Phone number sent to backend...')
-  //     router.push('/(tabs)')
-  //   }
-  // }
 
   return (
     <KeyboardAvoidingView behavior='position' style={{ flex: 1 }}>
@@ -75,32 +47,21 @@ export default function LoginScreen() {
         >
           <View
             style={{
-              paddingHorizontal: 24,
-              height: 52,
               alignItems: 'center',
-              flexDirection: 'row',
+              flex: 1,
+              justifyContent: 'center',
+              backgroundColor: theme.colors.card,
             }}
           >
-            <TouchableOpacity onPress={() => router.push('/(Onboarding/')}>
-              <Icons
-                name='arrow-back-ios'
-                size={24}
-                color={theme.colors.text}
+            <View>
+              <LottieView
+                source={require('../../assets/animations/auth.json')}
+                autoPlay
+                loop
+                style={{ width: 300, height: 300 }}
               />
-            </TouchableOpacity>
+            </View>
           </View>
-
-          <Image
-            source={require('../../assets/images/people.png')}
-            style={{
-              width: '100%',
-              height: 300,
-              borderRadius: 10,
-              marginTop: 10,
-              marginBottom: 10,
-              resizeMode: 'cover',
-            }}
-          />
 
           <View style={{ padding: 24 }}>
             <Text
@@ -213,7 +174,7 @@ export default function LoginScreen() {
                 <AuthCallout
                   text="Don't have an account?"
                   linkText='Sign Up'
-                  route='/SignUpScreen'
+                  route='/(SignUpScreen)'
                 />
               </View>
             </View>
