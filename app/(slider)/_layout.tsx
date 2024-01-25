@@ -18,7 +18,6 @@ export default function WelcomeLayout() {
         <Stack.Screen name='index' options={{ headerShown: false }} />
         <Stack.Screen name='AuthSelection' options={{ headerShown: false }} />
         <Stack.Screen name='Welcome' options={{ headerShown: false }} />
-        <Stack.Screen name='EnterDetails' options={{ headerShown: false }} />
       </Stack>
     </ThemeProvider>
   )

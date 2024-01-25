@@ -3,7 +3,6 @@ import { Text, View } from '../../components/Themed'
 import PagerView from 'react-native-pager-view'
 import Welcome from './Welcome'
 import AuthSelection from './AuthSelection'
-import WelcomeBack from './EnterDetails'
 
 export default function WelcomePagerSlider() {
   return (
@@ -20,7 +19,7 @@ export default function WelcomePagerSlider() {
           <AuthSelection />
         </View>
         <View key='3'>
-          <WelcomeBack />
+          <Welcome />
         </View>
       </PagerView>
     </View>

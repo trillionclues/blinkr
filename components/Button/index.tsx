@@ -1,74 +1,63 @@
 import {
-  ActivityIndicator,
-  Platform,
-  View,
-  StyleSheet,
-  ViewStyle,
   TouchableOpacity,
+  ViewStyle,
+  StyleProp,
+  TextStyle,
+  useColorScheme,
+  Pressable,
 } from 'react-native'
 import React from 'react'
+import {
+  DarkTheme,
+  DefaultTheme,
+  ThemeProvider,
+} from '@react-navigation/native'
 import { Text } from '../Themed'
 
-interface ButtonProps {
-  text: string
-  width?: string
-  height?: string
-
-  style?: ViewStyle
-  loading?: boolean
-  disabled?: boolean
-  icon?: JSX.Element | null
-  iconRight?: boolean
-  onPress?: () => void
-}
-
-const Button = ({
-  text,
-  width,
-  height,
-  style,
-  loading,
-  disabled,
-  icon,
-  iconRight,
+export const PrimaryButton = ({
   onPress,
-}: ButtonProps) => {
+  label,
+  style,
+  labelStyle,
+}: {
+  onPress?: () => void
+  label: string
+  style?: StyleProp<ViewStyle>
+  labelStyle?: StyleProp<TextStyle>
+}) => {
+  const colorScheme = useColorScheme()
+
   return (
-    <View style={style}>
-      <TouchableOpacity
-        disabled={disabled}
-        style={[styles.wrap]}
+    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+      <Pressable
+        android_ripple={{ color: 'rgb(0, 122, 255)', borderless: true }}
+        style={({ pressed }) => [
+          {
+            backgroundColor: pressed
+              ? 'rgba(30, 126, 212, 0.5)'
+              : 'rgb(0, 122, 255)',
+            paddingHorizontal: 32,
+            height: 52,
+            borderRadius: 100,
+            alignItems: 'center',
+            justifyContent: 'center',
+          },
+          style,
+        ]}
+        // style={}
         onPress={onPress}
       >
-        {loading ? (
-          <ActivityIndicator color='#fff' />
-        ) : (
-          <View style={styles.row}>
-            {icon && !iconRight && icon}
-            <Text style={[styles.text]}>{text}</Text>
-            {icon && iconRight && icon}
-          </View>
-        )}
-      </TouchableOpacity>
-    </View>
+        <Text
+          style={[
+            { fontSize: 20, fontWeight: '600', color: '#fff' },
+            labelStyle,
+          ]}
+        >
+          {label}
+        </Text>
+      </Pressable>
+    </ThemeProvider>
   )
 }
 
-const styles = StyleSheet.create({
-  button: {
-    position: 'relative',
-  },
-  wrap: {
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  row: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  text: {
-    textAlign: 'center',
-  },
-})
-
-export default Button
+export default PrimaryButton

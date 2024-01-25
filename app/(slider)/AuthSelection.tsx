@@ -8,7 +8,7 @@ import LottieView from 'lottie-react-native'
 
 export default function AuthSelection() {
   const handlePhoneLogin = () => {
-    router.push('/(slider)/EnterDetails')
+    // router.push('/(slider)/EnterDetails')
   }
 
   const handleGoogleLogin = () => {

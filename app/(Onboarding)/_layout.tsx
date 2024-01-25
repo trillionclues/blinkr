@@ -17,7 +17,8 @@ export default function OnboardingLayout() {
         initialRouteName='index'
       >
         <Stack.Screen name='index' options={{ headerShown: false }} />
-        <Stack.Screen name='Welcome' options={{ headerShown: false }} />
+        <Stack.Screen name='LoginScreen' options={{ headerShown: false }} />
+        <Stack.Screen name='SignUpScreen' options={{ headerShown: false }} />
       </Stack>
     </ThemeProvider>
   )

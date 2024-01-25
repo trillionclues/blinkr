@@ -6,8 +6,10 @@ import { Text } from '../../components/Themed'
 import { TouchableOpacity } from '@gorhom/bottom-sheet'
 import { Entypo } from '@expo/vector-icons'
 import { router } from 'expo-router'
+import { useTheme } from '@react-navigation/native'
 
 export default function OnboardingScreen() {
+  const theme = useTheme()
   const nextButton = ({ ...props }) => {
     return (
       <TouchableOpacity
@@ -16,7 +18,7 @@ export default function OnboardingScreen() {
           height: 50,
           width: 60,
           borderRadius: 30,
-          backgroundColor: '#1E7ED4',
+          backgroundColor: theme.colors.primary,
 
           justifyContent: 'center',
           alignItems: 'center',
@@ -45,7 +47,7 @@ export default function OnboardingScreen() {
           height: 50,
           width: 60,
           borderRadius: 30,
-          backgroundColor: '#1E7ED4',
+          backgroundColor: theme.colors.primary,
           justifyContent: 'center',
           marginRight: 10,
           alignItems: 'center',
@@ -66,7 +68,7 @@ export default function OnboardingScreen() {
   }
 
   const handleDone = () => {
-    router.push('/(slider)/AuthSelection')
+    router.push('/LoginScreen')
     // setItem('onboarded', '1')
   }
   return (
@@ -82,7 +84,7 @@ export default function OnboardingScreen() {
         }}
         pages={[
           {
-            backgroundColor: '#a7f3d0',
+            backgroundColor: theme.dark ? theme.colors.background : '#a7f3d0',
             image: (
               <View>
                 <LottieView
@@ -94,8 +96,17 @@ export default function OnboardingScreen() {
               </View>
             ),
             title: (
-              <Text style={styles.title}>
-                Connect, Share and <Text style={styles.boldText}>Blinkr</Text>
+              <Text style={[styles.title, { color: theme.colors.text }]}>
+                Connect, Share and{' '}
+                <Text
+                  style={{
+                    fontWeight: 'bold',
+                    color: theme.colors.primary,
+                    fontSize: 30,
+                  }}
+                >
+                  Blinkr
+                </Text>
               </Text>
             ),
             subtitle: (
@@ -106,7 +117,7 @@ export default function OnboardingScreen() {
             ),
           },
           {
-            backgroundColor: '#fef3c7',
+            backgroundColor: theme.dark ? theme.colors.background : '#fef3c7',
             image: (
               <View>
                 <LottieView
@@ -117,7 +128,11 @@ export default function OnboardingScreen() {
                 />
               </View>
             ),
-            title: <Text style={styles.title}>Share Messages and Moments</Text>,
+            title: (
+              <Text style={[styles.title, { color: theme.colors.text }]}>
+                Share Messages and Moments
+              </Text>
+            ),
             subtitle: (
               <Text style={styles.subtitle}>
                 Exchange messages, share moments, and connect with like-minded
@@ -126,7 +141,7 @@ export default function OnboardingScreen() {
             ),
           },
           {
-            backgroundColor: '#fff',
+            backgroundColor: theme.dark ? theme.colors.background : '#fff',
             image: (
               <View>
                 <LottieView
@@ -138,10 +153,12 @@ export default function OnboardingScreen() {
               </View>
             ),
             title: (
-              <Text style={styles.title}>Stay Connected, Stay Anonymous</Text>
+              <Text style={[styles.title, { color: theme.colors.text }]}>
+                Stay Connected, Stay Anonymous
+              </Text>
             ),
             subtitle: (
-              <Text style={styles.subtitle}>
+              <Text style={[styles.subtitle]}>
                 Stay connected with your local community while maintaining your
                 privacy.
               </Text>
@@ -171,11 +188,7 @@ const styles = StyleSheet.create({
     color: '#666',
     width: '80%',
   },
-  boldText: {
-    fontWeight: 'bold',
-    color: '#1E7ED4',
-    fontSize: 30,
-  },
+
   doneButton: {
     padding: 20,
     backgroundColor: '#fff',
