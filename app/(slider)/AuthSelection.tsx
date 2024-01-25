@@ -3,112 +3,99 @@ import { StyleSheet, Pressable, Image } from 'react-native'
 import { router } from 'expo-router'
 import { Text, View } from '../../components/Themed'
 import { Entypo, MaterialIcons } from '@expo/vector-icons'
+import { TouchableOpacity } from '@gorhom/bottom-sheet'
+import LottieView from 'lottie-react-native'
 
 export default function AuthSelection() {
-  const handlePress = () => {
+  const handlePhoneLogin = () => {
     router.push('/(slider)/EnterDetails')
   }
 
+  const handleGoogleLogin = () => {
+    // Perform Google login logic or navigate to Google login screen
+  }
+
   return (
-    <View style={styles.container}>
-      <View style={{ marginBottom: 40, alignItems: 'center' }}>
-        {/* <Image
-          source={require('../../assets/images/location_pin.jpg')}
+    <>
+      <View style={styles.container}>
+        <View
           style={{
-            width: 200,
-            height: 200,
-            resizeMode: 'contain',
-          }}
-        /> */}
-        <Entypo name='location-pin' size={154} color='#1E7ED4' />
-        <Text
-          style={{
-            fontWeight: 'bold',
-            fontSize: 33,
-            color: '#1E7ED4',
-            marginTop: 10,
-            textAlign: 'center',
-            letterSpacing: 1,
+            backgroundColor: '#fff',
+            alignSelf: 'center',
+            width: 300,
+            height: 300,
+            marginBottom: 20,
           }}
         >
-          Blinkr
-        </Text>
-      </View>
-
-      <View style={styles.buttonsContainer}>
-        <Pressable
-          android_ripple={{ color: 'rgba(30, 126, 212, 0.5)' }}
-          style={({ pressed }) => [
-            styles.connectButton,
-            ,
-            {
-              backgroundColor: '#fff',
-              opacity: pressed ? 0.5 : 1,
-            },
-          ]}
-          onPress={handlePress}
-        >
-          <MaterialIcons
-            name='call'
-            size={24}
-            color='#1E7ED4'
-            style={styles.buttonIcon}
+          <LottieView
+            source={require('../../assets/animations/auth.json')}
+            autoPlay
+            loop
+            style={{ width: 300, height: 300 }}
           />
-          <Text style={{ fontSize: 18, color: '#737373' }}>
-            Connect with Phone
-          </Text>
-        </Pressable>
+        </View>
+        <View style={styles.contentContainer}>
+          <Text style={styles.title}>Choose Your Login Method</Text>
 
-        <Pressable
-          android_ripple={{ color: 'rgba(30, 126, 212, 0.5)' }}
-          style={({ pressed }) => [
-            styles.connectButton,
-            ,
-            {
-              backgroundColor: '#fff',
-              opacity: pressed ? 0.5 : 1,
-            },
-          ]}
-          onPress={() => {
-            console.log('Pressed Google Sign In')
-          }}
-        >
-          <Image
-            source={{
-              uri: 'https://img.icons8.com/color/24/000000/google-logo.png',
-            }}
-            style={styles.buttonIcon}
-          />
-          <Text style={{ fontSize: 18, color: '#737373' }}>
-            Connect with Google
-          </Text>
-        </Pressable>
+          <TouchableOpacity
+            style={styles.optionContainer}
+            onPress={handlePhoneLogin}
+          >
+            <Text style={styles.optionText}>Login with Phone</Text>
+            <Entypo name='phone' size={24} color='#1E7ED4' />
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={styles.optionContainer}
+            onPress={handleGoogleLogin}
+          >
+            <Text style={styles.optionText}>Login with Google</Text>
+            <Image
+              source={{
+                uri: 'https://img.icons8.com/color/24/000000/google-logo.png',
+              }}
+              style={styles.buttonIcon}
+            />
+          </TouchableOpacity>
+        </View>
       </View>
-    </View>
+    </>
   )
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#fff',
     justifyContent: 'center',
-    alignItems: 'center',
   },
-
-  buttonsContainer: {
-    width: '80%',
+  contentContainer: {
+    paddingHorizontal: 15,
+    backgroundColor: '#fff',
   },
-  connectButton: {
-    borderRadius: 50,
-    marginBottom: 15,
-    alignItems: 'center',
-    justifyContent: 'center',
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginBottom: 20,
+    textAlign: 'center',
+    color: '#333',
+    width: '100%',
+  },
+  optionContainer: {
     flexDirection: 'row',
-    padding: 10,
-    borderColor: '#1E7ED4',
-    shadowColor: '#000',
-    borderWidth: 1,
-    gap: 10,
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    backgroundColor: '#f4f4f4',
+    borderRadius: 10,
+    paddingVertical: 15,
+    paddingHorizontal: 20,
+    marginBottom: 15,
+    elevation: 2,
+    width: '100%',
+  },
+  optionText: {
+    fontSize: 18,
+    color: '#1E7ED4',
   },
   buttonIcon: {
     width: 25,
